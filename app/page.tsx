@@ -1,25 +1,27 @@
 import Link from "next/link";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
+import { UserButton } from "@clerk/nextjs";
 
-export default function Home() {
+export default async function Home() {
+  const { userId } = await auth();
+
   return (
     <main className="shell">
       <section className="card">
         <p className="eyebrow">Cactus🌵Byte Studios™</p>
         <h1>Hustle First™</h1>
         <p>Marketplace for clients</p>
-        <SignedOut>
-          <div className="actions">
-            <Link className="button" href="/sign-in">Sign in</Link>
-            <Link className="button secondary" href="/sign-up">Create account</Link>
-          </div>
-        </SignedOut>
-        <SignedIn>
+        {userId ? (
           <div className="actions">
             <Link className="button" href="/client">Open client area</Link>
             <UserButton />
           </div>
-        </SignedIn>
+        ) : (
+          <div className="actions">
+            <Link className="button" href="/sign-in">Sign in</Link>
+            <Link className="button secondary" href="/sign-up">Create account</Link>
+          </div>
+        )}
       </section>
       <footer>Hustle First™ · Cactus🌵Byte Studios™ · All Rights Reserved.</footer>
     </main>
