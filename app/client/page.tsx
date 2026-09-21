@@ -14,6 +14,10 @@ export default async function ClientPage() {
         <p className="status">
           Account: {user?.username ?? user?.primaryEmailAddress?.emailAddress ?? userId}
         </p>
+        <p className="status">
+          Marketplace listings will belong to this account. Persistence and listing
+          creation are intentionally gated for the next build step.
+        </p>
         <Link className="button" href="/">Back home</Link>
       </section>
       <footer>Hustle First™ · Cactus🌵Byte Studios™ · All Rights Reserved.</footer>
