@@ -1,43 +1,6 @@
-import { NextResponse } from "next/server";
-import { deleteOwnedListing, findOwnedListing, updateOwnedListing } from "../../../../../lib/marketplace-repository";
-import { parseUpdateListingInput } from "../../../../../lib/marketplace";
-
-type RouteContext = { params: Promise<{ id: string }> };
-
-export async function GET(_request: Request, context: RouteContext) {
-  const { id } = await context.params;
-  try {
-    const listing = await findOwnedListing(id);
-    return listing
-      ? NextResponse.json({ listing })
-      : NextResponse.json({ error: "Listing not found." }, { status: 404 });
-  } catch {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-}
-
-export async function PATCH(request: Request, context: RouteContext) {
-  const { id } = await context.params;
-  try {
-    const input = parseUpdateListingInput(await request.json());
-    const listing = await updateOwnedListing(id, input);
-    return listing
-      ? NextResponse.json({ listing })
-      : NextResponse.json({ error: "Listing not found." }, { status: 404 });
-  } catch (error) {
-    const message = error instanceof Error ? error.message : "Request failed.";
-    return NextResponse.json({ error: message }, { status: message === "Unauthorized" ? 401 : 400 });
-  }
-}
-
-export async function DELETE(_request: Request, context: RouteContext) {
-  const { id } = await context.params;
-  try {
-    const deleted = await deleteOwnedListing(id);
-    return deleted
-      ? new Response(null, { status: 204 })
-      : NextResponse.json({ error: "Listing not found." }, { status: 404 });
-  } catch {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-}
+import {NextResponse} from "next/server";import {deleteOwnedListing,findOwnedListing,updateOwnedListing} from "../../../../../lib/marketplace-repository";import {parseUpdateListingInput} from "../../../../../lib/marketplace";import {errorMessage,errorStatus,noStoreHeaders,readJson} from "../../../../../lib/api";
+type RouteContext={params:Promise<{id:string}>};
+function cleanId(id:string){const v=id.trim();return v&&v.length<=128?v:null}
+export async function GET(_r:Request,c:RouteContext){const id=cleanId((await c.params).id);if(!id)return NextResponse.json({error:"Listing not found."},{status:404,headers:noStoreHeaders()});try{const listing=await findOwnedListing(id);return listing?NextResponse.json({listing},{headers:noStoreHeaders()}):NextResponse.json({error:"Listing not found."},{status:404,headers:noStoreHeaders()})}catch{return NextResponse.json({error:"Unauthorized"},{status:401,headers:noStoreHeaders()})}}
+export async function PATCH(request:Request,c:RouteContext){const id=cleanId((await c.params).id);if(!id)return NextResponse.json({error:"Listing not found."},{status:404,headers:noStoreHeaders()});try{const input=parseUpdateListingInput(await readJson(request));const listing=await updateOwnedListing(id,input);return listing?NextResponse.json({listing},{headers:noStoreHeaders()}):NextResponse.json({error:"Listing not found."},{status:404,headers:noStoreHeaders()})}catch(error){const message=errorMessage(error);return NextResponse.json({error:message},{status:errorStatus(message),headers:noStoreHeaders()})}}
+export async function DELETE(_r:Request,c:RouteContext){const id=cleanId((await c.params).id);if(!id)return NextResponse.json({error:"Listing not found."},{status:404,headers:noStoreHeaders()});try{return await deleteOwnedListing(id)?new Response(null,{status:204,headers:noStoreHeaders()}):NextResponse.json({error:"Listing not found."},{status:404,headers:noStoreHeaders()})}catch{return NextResponse.json({error:"Unauthorized"},{status:401,headers:noStoreHeaders()})}}
