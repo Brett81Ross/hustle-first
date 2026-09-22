@@ -1,1 +1,1 @@
-import type {MetadataRoute} from "next";export default function robots():MetadataRoute.Robots{return {rules:{userAgent:"*",allow:["/","/marketplace"],disallow:["/client/","/api/","/sign-in/","/sign-up/"]}}}
+import type {MetadataRoute} from "next";export default function robots():MetadataRoute.Robots{return {rules:{userAgent:"*",allow:["/","/marketplace"],disallow:["/client","/api","/sign-in","/sign-up"]}}}
