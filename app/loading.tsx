@@ -1,0 +1,1 @@
+export default function Loading(){return <main className="shell"><section className="card loading-card" aria-live="polite"><p className="eyebrow">Hustle First™</p><h1>Loading…</h1><p className="lede">Getting things ready.</p><div className="loading-bar" aria-hidden="true"/></section></main>}
