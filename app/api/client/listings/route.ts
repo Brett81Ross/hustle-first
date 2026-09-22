@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { createOwnedListing, listOwnedListings } from "../../../lib/marketplace-repository";
-import { parseCreateListingInput } from "../../../lib/marketplace";
+import { createOwnedListing, listOwnedListings } from "../../../../lib/marketplace-repository";
+import { parseCreateListingInput } from "../../../../lib/marketplace";
 
 export async function GET() {
   try {
