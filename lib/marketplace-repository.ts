@@ -1,6 +1,6 @@
 import { auth } from "@clerk/nextjs/server";
 import { db } from "./db";
-import type { CreateListingInput } from "./marketplace";
+import type { CreateListingInput, UpdateListingInput } from "./marketplace";
 
 async function requireUserId() {
   const { userId } = await auth();
@@ -45,9 +45,7 @@ export async function createOwnedListing(input: CreateListingInput) {
 
 export async function updateOwnedListing(
   id: string,
-  input: Partial<CreateListingInput> & {
-    status?: "active" | "paused" | "closed";
-  },
+  input: UpdateListingInput,
 ) {
   const userId = await requireUserId();
 
