@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { deleteOwnedListing, findOwnedListing, updateOwnedListing } from "../../../../lib/marketplace-repository";
-import { parseUpdateListingInput } from "../../../../lib/marketplace";
+import { deleteOwnedListing, findOwnedListing, updateOwnedListing } from "../../../../../lib/marketplace-repository";
+import { parseUpdateListingInput } from "../../../../../lib/marketplace";
 
 type RouteContext = { params: Promise<{ id: string }> };
 
