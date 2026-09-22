@@ -1,0 +1,1 @@
+export async function apiJson(response:Response){if(response.status===204)return null;const type=response.headers.get("content-type")??"";if(!type.includes("application/json")){throw new Error("The server returned an unexpected response. Please try again.")}return response.json()}
