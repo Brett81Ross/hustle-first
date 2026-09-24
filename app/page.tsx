@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 export default function Home() {
   return (
@@ -14,20 +13,15 @@ export default function Home() {
           <Link className="button" href="/marketplace">
             Browse marketplace
           </Link>
-          <SignedIn>
-            <Link className="button secondary" href="/client">
-              My hustle
-            </Link>
-            <UserButton />
-          </SignedIn>
-          <SignedOut>
-            <Link className="button secondary" href="/sign-in">
-              Sign in
-            </Link>
-            <Link className="button secondary" href="/sign-up">
-              Create account
-            </Link>
-          </SignedOut>
+          <Link className="button secondary" href="/client">
+            My hustle
+          </Link>
+          <Link className="button secondary" href="/sign-in">
+            Sign in
+          </Link>
+          <Link className="button secondary" href="/sign-up">
+            Create account
+          </Link>
         </div>
       </section>
       <footer>
