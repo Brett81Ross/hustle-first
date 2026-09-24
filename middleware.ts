@@ -6,6 +6,10 @@ const isProtectedRoute = createRouteMatcher([
 ]);
 
 export default clerkMiddleware(async (auth, req) => {
+  console.log("HUSTLE_FIRST_CLERK_RUNTIME_DIAGNOSTIC", {
+    hasPublishableKey: Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY),
+  });
+
   if (isProtectedRoute(req)) {
     await auth.protect();
   }
