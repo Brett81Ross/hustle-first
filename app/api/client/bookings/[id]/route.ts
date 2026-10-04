@@ -1,0 +1,2 @@
+import {NextResponse} from "next/server";import {cancelBooking} from "../../../../../lib/booking-repository";import {noStoreHeaders} from "../../../../../lib/api";type C={params:Promise<{id:string}>};
+export async function DELETE(_r:Request,c:C){try{return await cancelBooking((await c.params).id)?new Response(null,{status:204,headers:noStoreHeaders()}):NextResponse.json({error:"Appointment not found."},{status:404,headers:noStoreHeaders()})}catch{return NextResponse.json({error:"Unauthorized"},{status:401,headers:noStoreHeaders()})}}

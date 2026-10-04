@@ -1,23 +1,59 @@
 generator client {
   provider = "prisma-client-js"
 }
-
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = env("DATABASE_URL")
 }
-
 model MarketplaceListing {
-  id          String   @id @default(cuid())
-  ownerId     String
-  title       String
+  id String @id @default(cuid())
+  ownerId String
+  title String
   description String
-  category    String
-  priceCents  Int?
-  status      String   @default("active")
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
+  category String
+  priceCents Int?
+  status String @default("active")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  availability BookingAvailability[]
+  bookings ServiceBooking[]
   @@index([ownerId])
   @@index([status, createdAt])
+}
+model BookingAvailability {
+  id String @id @default(cuid())
+  listingId String
+  ownerId String
+  label String
+  startsAt DateTime
+  endsAt DateTime
+  slotMinutes Int
+  priceCents Int?
+  isCommunityService Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  listing MarketplaceListing @relation(fields:[listingId],references:[id],onDelete:Cascade)
+  bookings ServiceBooking[]
+  @@index([listingId, startsAt])
+  @@index([ownerId, startsAt])
+}
+model ServiceBooking {
+  id String @id @default(cuid())
+  availabilityId String
+  listingId String
+  providerId String
+  customerId String
+  startsAt DateTime
+  endsAt DateTime
+  label String
+  priceCents Int?
+  isCommunityService Boolean @default(false)
+  status String @default("booked")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  availability BookingAvailability @relation(fields:[availabilityId],references:[id],onDelete:Cascade)
+  listing MarketplaceListing @relation(fields:[listingId],references:[id],onDelete:Cascade)
+  @@index([providerId, startsAt])
+  @@index([customerId, startsAt])
+  @@index([listingId, startsAt])
 }
