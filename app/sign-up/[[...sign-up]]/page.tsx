@@ -5,6 +5,7 @@ import { isClerkAPIResponseError } from "@clerk/nextjs/errors";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
+import AppFooter from "../../../components/AppFooter";
 
 function errorMessages(error: unknown): string[] {
   if (isClerkAPIResponseError(error)) {
@@ -133,7 +134,7 @@ export default function SignUpPage() {
           Already have an account? <Link href="/sign-in">Sign in</Link>.
         </p>
       </section>
-      <footer>Hustle First™ · Cactus🌵Byte Studios™ · All Rights Reserved.</footer>
+      <AppFooter />
     </main>
   );
 }
