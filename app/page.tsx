@@ -1,23 +1,2 @@
-import Link from "next/link";
-import AppFooter from "../components/AppFooter";
-import ShareHustleFirst from "../components/ShareHustleFirst";
-
-export default function Home() {
-  return (
-    <main className="shell">
-      <section className="card">
-        <p className="eyebrow">Cactus🌵Byte Studios™</p>
-        <h1>Hustle First™</h1>
-        <p className="lede">A marketplace built around what people can offer, make, sell, and do.</p>
-        <div className="actions">
-          <Link className="button" href="/marketplace">Browse marketplace</Link>
-          <Link className="button secondary" href="/client">My hustle</Link>
-          <Link className="button secondary" href="/sign-in">Sign in</Link>
-          <Link className="button secondary" href="/sign-up">Create account</Link>
-          <ShareHustleFirst />
-        </div>
-      </section>
-      <AppFooter />
-    </main>
-  );
-}
+import Link from "next/link";import BrandMark from "../components/BrandMark";import BottomNav from "../components/BottomNav";import AppFooter from "../components/AppFooter";import ShareHustleFirst from "../components/ShareHustleFirst";
+export default function Home(){return <main className="app-shell"><section className="home-hero"><div className="top-brand"><BrandMark/><Link className="icon-button" href="/client/messages" aria-label="Messages">▢</Link></div><div className="hero-copy"><p className="eyebrow">REAL PEOPLE · REAL DEALS</p><h1><span>HUSTLE</span><em>FIRST</em></h1><p>Buy. Sell. Trade. Find services. Keep opportunity moving through the community.</p></div><div className="category-tiles"><Link href="/marketplace?category=sell"><span>◆</span><strong>Sell</strong></Link><Link href="/marketplace?category=trade"><span>⇄</span><strong>Trade</strong></Link><Link href="/marketplace?category=free"><span>▣</span><strong>Free</strong></Link><Link href="/marketplace?category=services"><span>⚙</span><strong>Services</strong></Link></div></section><section className="home-actions"><Link className="action-card primary-action" href="/client/listings/new"><span className="action-icon">＋</span><span><strong>New Listing</strong><small>Post an item or service</small></span><b>›</b></Link><Link className="action-card" href="/marketplace"><span className="action-icon">⌕</span><span><strong>Browse Marketplace</strong><small>See what the community is offering</small></span><b>›</b></Link><Link className="action-card" href="/client"><span className="action-icon">▥</span><span><strong>My Hustle</strong><small>Listings, messages & appointments</small></span><b>›</b></Link></section><section className="share-panel"><div><p className="eyebrow">SHARE HUSTLE FIRST™</p><h2>Bring somebody in.</h2><p>Share the marketplace or let them scan the code.</p></div><div className="share-inline"><img src="/hustle-first-qr.svg" alt="QR code for Hustle First"/><ShareHustleFirst/></div></section><AppFooter/><BottomNav active="home"/></main>}
