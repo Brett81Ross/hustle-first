@@ -1,0 +1,3 @@
+import {NextResponse} from "next/server";import {bookSlot,myBookings} from "../../../../lib/booking-repository";import {readJson,noStoreHeaders,errorMessage,errorStatus} from "../../../../lib/api";
+export async function GET(){try{return NextResponse.json(await myBookings(),{headers:noStoreHeaders()})}catch(e){const m=errorMessage(e);return NextResponse.json({error:m},{status:errorStatus(m),headers:noStoreHeaders()})}}
+export async function POST(r:Request){try{const b=await readJson(r) as Record<string,unknown>;return NextResponse.json({booking:await bookSlot(String(b.availabilityId??""),String(b.startsAt??""))},{status:201,headers:noStoreHeaders()})}catch(e){const m=errorMessage(e);return NextResponse.json({error:m},{status:errorStatus(m),headers:noStoreHeaders()})}}
