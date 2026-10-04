@@ -14,3 +14,5 @@
 .qr-frame{display:grid;place-items:center;background:#fff;border-radius:16px;padding:14px;margin:18px auto;max-width:324px}.qr-frame img{display:block;width:100%;height:auto;image-rendering:pixelated}
 .share-url{overflow-wrap:anywhere;color:#b9c0c3;font-size:.9rem}.share-dialog .button{width:100%}
 @media(max-width:620px){.qr-button{width:100%}.share-dialog{padding:22px}}
+
+.booking-stack{display:grid;gap:16px;margin-top:24px}.booking-block{padding:22px;border:1px solid #343a3e;border-radius:16px;background:#121516}.booking-block p{color:#b9c0c3;line-height:1.45}.slot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:18px}.slot-button{min-height:48px;padding:10px;border:1px solid #4a5358;border-radius:12px;background:#24292c;color:#f5f5f5;font-weight:800;cursor:pointer}.slot-button:disabled{opacity:.5;cursor:wait}
