@@ -5,3 +5,12 @@
 .loading-card{overflow:hidden}.loading-bar{height:5px;border-radius:999px;background:#343a3e;position:relative;overflow:hidden;margin-top:20px}.loading-bar:after{content:"";position:absolute;inset:0;width:40%;background:#f5f5f5;animation:load 1.2s ease-in-out infinite}@keyframes load{from{transform:translateX(-120%)}to{transform:translateX(300%)}}@media(prefers-reduced-motion:reduce){.loading-bar:after{animation:none;width:100%;opacity:.45}}
 
 .auth-form{display:grid;gap:16px;margin-top:12px}.auth-form label{display:grid;gap:8px;font-weight:800}.auth-form input{width:100%;min-height:48px;border:1px solid #3a4145;border-radius:12px;background:#0b0d0e;color:#f5f5f5;padding:13px 14px}.auth-form input:focus{outline:2px solid #f5f5f5;outline-offset:2px}.auth-note{margin:0;color:#aeb5b8;font-size:.88rem;line-height:1.5}.auth-form .form-error p{margin:.25rem 0}.auth-form .button{width:100%}
+
+.footer-link{color:inherit;text-decoration:underline;text-underline-offset:3px;font-weight:700}.footer-link:focus-visible{outline:2px solid #f5f5f5;outline-offset:4px;border-radius:3px}
+.qr-button{border:0;background:transparent;color:#cbd0d2;text-decoration:underline;text-underline-offset:3px;font-weight:800;cursor:pointer;min-height:48px;padding:0 8px}
+.share-backdrop{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:18px;background:rgba(0,0,0,.78)}
+.share-dialog{position:relative;width:min(100%,420px);padding:26px;border:1px solid #3b4246;border-radius:20px;background:#121516;box-shadow:0 24px 80px rgba(0,0,0,.5)}
+.share-dialog h2{margin:.25rem 36px 1rem 0}.share-close{position:absolute;right:14px;top:12px;width:44px;height:44px;border:0;border-radius:50%;background:#24292c;color:#f5f5f5;font-size:1.8rem;cursor:pointer}
+.qr-frame{display:grid;place-items:center;background:#fff;border-radius:16px;padding:14px;margin:18px auto;max-width:324px}.qr-frame img{display:block;width:100%;height:auto;image-rendering:pixelated}
+.share-url{overflow-wrap:anywhere;color:#b9c0c3;font-size:.9rem}.share-dialog .button{width:100%}
+@media(max-width:620px){.qr-button{width:100%}.share-dialog{padding:22px}}
