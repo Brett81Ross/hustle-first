@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="Hustle First urban night skyline">
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#050707"/><stop offset=".62" stop-color="#090d0e"/><stop offset="1" stop-color="#020405"/></linearGradient>
+  <linearGradient id="road" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#0b1012"/><stop offset="1" stop-color="#020304"/></linearGradient>
+  <linearGradient id="teal" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#00e5d6"/><stop offset="1" stop-color="#7ff3e9"/></linearGradient>
+  <filter id="noise"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" seed="7"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .08"/></feComponentTransfer></filter>
+  <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="1200" height="620" fill="url(#sky)"/>
+<g opacity=".96">
+  <path fill="#101517" d="M0 335h90V180h42v155h78V122h52v213h63V214h54v121h75V92h74v243h74V160h59v175h64V131h65v204h68V202h47v133h73V145h56v190h80v-96h76v96h90v285H0z"/>
+  <path fill="#171d1f" d="M210 122h52v213h-52zM454 92h74v243h-74zM661 131h65v204h-65zM857 145h56v190h-56z"/>
+  <g fill="#dfe8e8" opacity=".42">
+    <rect x="220" y="151" width="7" height="12"/><rect x="242" y="151" width="7" height="12"/><rect x="220" y="184" width="7" height="12"/><rect x="242" y="184" width="7" height="12"/>
+    <rect x="470" y="124" width="8" height="13"/><rect x="495" y="124" width="8" height="13"/><rect x="470" y="160" width="8" height="13"/><rect x="495" y="160" width="8" height="13"/>
+    <rect x="680" y="159" width="7" height="11"/><rect x="704" y="159" width="7" height="11"/><rect x="680" y="190" width="7" height="11"/><rect x="704" y="190" width="7" height="11"/>
+    <rect x="876" y="175" width="7" height="11"/><rect x="897" y="175" width="7" height="11"/>
+  </g>
+</g>
+<path d="M0 402C260 366 470 370 1200 398v222H0z" fill="url(#road)"/>
+<g opacity=".28" stroke="#95a5a7" stroke-width="2">
+  <path d="M0 450 1200 430"/><path d="M0 486 1200 464"/><path d="M0 523 1200 500"/><path d="M0 560 1200 535"/>
+</g>
+<g opacity=".32">
+  <path d="M170 411 110 620h76l35-209zM380 402l-30 218h77l10-218zM650 398l10 222h86l-35-220zM972 397l72 223h82l-106-225z" fill="#2b3436"/>
+</g>
+<g fill="none" stroke="url(#teal)" stroke-width="3" opacity=".5" filter="url(#glow)">
+  <path d="M812 305v142"/><path d="M1080 337v92"/><path d="M985 402h122"/>
+</g>
+<g opacity=".2"><rect width="1200" height="620" filter="url(#noise)"/></g>
+<g transform="translate(890 255) rotate(-3)">
+  <rect x="-20" y="-25" width="300" height="205" rx="4" fill="#0d1112" opacity=".82" stroke="#243033"/>
+  <text x="12" y="20" fill="#edf2f2" font-family="Arial Black,Arial" font-style="italic" font-size="31">GOOD PEOPLE</text>
+  <text x="12" y="58" fill="#edf2f2" font-family="Arial Black,Arial" font-style="italic" font-size="31">GREAT DEALS</text>
+  <text x="12" y="96" fill="#edf2f2" font-family="Arial Black,Arial" font-style="italic" font-size="31">STRONGER</text>
+  <text x="12" y="134" fill="#edf2f2" font-family="Arial Black,Arial" font-style="italic" font-size="31">COMMUNITIES.</text>
+  <path d="M15 155h130" stroke="#00e5d6" stroke-width="8"/>
+</g>
+</svg>
