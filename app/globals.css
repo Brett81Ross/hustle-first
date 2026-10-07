@@ -443,3 +443,17 @@ linear-gradient(180deg,#0f1516,#090d0e);border-color:#2e4346;padding:15px 16px;g
   repeating-linear-gradient(0deg,rgba(255,255,255,.014) 0 1px,transparent 1px 4px);
   opacity:.42}
 .compact-slogan{z-index:3;text-shadow:0 4px 18px rgba(0,0,0,.95)}
+
+
+/* ABL-35 production UX polish */
+.home-menu-wrap{position:relative;z-index:80;justify-self:start}
+.menu-scrim{position:fixed;inset:0;z-index:78;border:0;background:rgba(0,0,0,.58)}
+.home-menu-panel{position:absolute;z-index:79;top:50px;left:0;width:min(82vw,300px);padding:8px;border:1px solid #314347;border-radius:12px;background:rgba(8,13,14,.98);box-shadow:0 18px 55px rgba(0,0,0,.55);backdrop-filter:blur(16px)}
+.home-menu-panel a{display:grid;grid-template-columns:38px 1fr;gap:10px;align-items:center;padding:11px;border-radius:9px;color:#fff;text-decoration:none}
+.home-menu-panel a:hover,.home-menu-panel a:focus-visible{background:rgba(0,229,214,.07);outline:none}
+.home-menu-panel a>svg{width:23px;height:23px;color:var(--mock-cyan)}
+.home-menu-panel a span{display:grid;gap:2px}
+.home-menu-panel a small{color:#889598;font-size:.72rem}
+.functional-search input{width:100%;min-width:0;border:0;background:transparent;color:#f5f7f7;outline:0;font:inherit}
+.functional-search input::placeholder{color:#8f9b9e}
+.functional-search button{font-size:.75rem;font-weight:900;color:#021011;background:var(--mock-cyan);border-color:var(--mock-cyan)}
