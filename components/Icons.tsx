@@ -1,6 +1,6 @@
-import type {SVGProps} from "react";
+import type {ReactNode,SVGProps} from "react";
 type P=SVGProps<SVGSVGElement>;
-const base=(children:React.ReactNode,p:P)=> <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" {...p}>{children}</svg>;
+const base=(children:ReactNode,p:P)=> <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" {...p}>{children}</svg>;
 export function MenuIcon(p:P){return base(<><path d="M4 7h16M4 12h16M4 17h16"/></>,p)}
 export function BellIcon(p:P){return base(<><path d="M6 9a6 6 0 0 1 12 0c0 7 3 7 3 7H3s3 0 3-7"/><path d="M10 20h4"/></>,p)}
 export function HomeIcon(p:P){return base(<><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9h13v-9"/></>,p)}
