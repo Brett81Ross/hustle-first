@@ -427,3 +427,19 @@ linear-gradient(180deg,#0f1516,#090d0e);border-color:#2e4346;padding:15px 16px;g
   .exact-create-form .mockup-category-choices{grid-template-columns:1fr 1fr}
   .exact-create-form .mockup-photo-grid{grid-template-columns:1fr 1fr}
 }
+
+/* ABL-34 photographic hero fidelity */
+.exact-urban-hero{
+  background:
+    linear-gradient(90deg,rgba(2,5,6,.82) 0%,rgba(2,5,6,.38) 48%,rgba(2,5,6,.12) 74%),
+    linear-gradient(180deg,rgba(2,5,6,.02) 0%,rgba(2,5,6,.12) 52%,rgba(2,5,6,.82) 100%),
+    url("/hf-urban-photo.webp") center 55%/cover no-repeat;
+}
+.exact-urban-hero::before{display:block;content:"";position:absolute;inset:0;pointer-events:none;background:
+  radial-gradient(circle at 32% 53%,rgba(255,255,255,.22) 0 1px,transparent 8%),
+  linear-gradient(110deg,transparent 0 58%,rgba(0,229,214,.05) 72%,transparent 84%);
+  mix-blend-mode:screen;opacity:.55}
+.exact-urban-hero::after{display:block;content:"";position:absolute;inset:0;pointer-events:none;background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.014) 0 1px,transparent 1px 4px);
+  opacity:.42}
+.compact-slogan{z-index:3;text-shadow:0 4px 18px rgba(0,0,0,.95)}
