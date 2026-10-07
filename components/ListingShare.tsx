@@ -1,0 +1,2 @@
+"use client";import {ShareIcon} from "./Icons";
+export default function ListingShare({title}:{title:string}){async function share(){const url=window.location.href;if(navigator.share){try{await navigator.share({title,text:"Check out this Hustle First™ listing.",url});return}catch(e){if(e instanceof DOMException&&e.name==="AbortError")return}}try{await navigator.clipboard.writeText(url);alert("Listing link copied.")}catch{alert(url)}}return <button className="button secondary" type="button" onClick={share}><ShareIcon/> Share</button>}
