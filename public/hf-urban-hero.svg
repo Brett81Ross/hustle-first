@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="Hustle First urban night skyline">
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#0b0d0e"/><stop offset=".52" stop-color="#06090a"/><stop offset="1" stop-color="#020304"/></linearGradient>
+  <linearGradient id="road" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#151a1c"/><stop offset=".32" stop-color="#090d0e"/><stop offset="1" stop-color="#010203"/></linearGradient>
+  <linearGradient id="wall" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#171a1b"/><stop offset="1" stop-color="#050708"/></linearGradient>
+  <radialGradient id="lamp"><stop stop-color="#fff" stop-opacity=".95"/><stop offset=".2" stop-color="#dfe8e8" stop-opacity=".65"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+  <linearGradient id="teal" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#00e5d6"/><stop offset="1" stop-color="#7ff3e9"/></linearGradient>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="4" seed="19"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .14"/></feComponentTransfer></filter>
+  <filter id="soft"><feGaussianBlur stdDeviation="5"/></filter>
+  <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="1200" height="620" fill="url(#sky)"/>
+<g opacity=".98">
+  <path d="M0 350h72V210h36v140h76V156h47v194h48V240h45v110h59V119h56v231h54V195h43v155h55V88h65v262h60V170h50v180h54V132h58v218h56V225h42v125h72V185h51v165h72v270H0z" fill="#101416"/>
+  <path d="M383 119h56v231h-56zM591 88h65v262h-65zM765 132h58v218h-58zM955 185h51v165h-51z" fill="#181d1f"/>
+  <g fill="#dce4e5" opacity=".5">
+    <rect x="395" y="145" width="7" height="11"/><rect x="418" y="145" width="7" height="11"/><rect x="395" y="177" width="7" height="11"/><rect x="418" y="177" width="7" height="11"/>
+    <rect x="607" y="118" width="8" height="12"/><rect x="632" y="118" width="8" height="12"/><rect x="607" y="151" width="8" height="12"/><rect x="632" y="151" width="8" height="12"/><rect x="607" y="185" width="8" height="12"/><rect x="632" y="185" width="8" height="12"/>
+    <rect x="782" y="160" width="7" height="11"/><rect x="805" y="160" width="7" height="11"/><rect x="782" y="194" width="7" height="11"/><rect x="805" y="194" width="7" height="11"/>
+    <rect x="970" y="211" width="7" height="11"/><rect x="992" y="211" width="7" height="11"/>
+  </g>
+</g>
+<path d="M780 0h420v620H870z" fill="url(#wall)" opacity=".96"/>
+<path d="M825 0 1200 0 1200 620 910 620z" fill="#080a0b" opacity=".78"/>
+<g stroke="#2a2e30" stroke-width="3" opacity=".7">
+  <path d="M883 0 960 620"/><path d="M955 0 1025 620"/><path d="M1027 0 1090 620"/>
+  <path d="M835 116h344M851 220h328M868 324h311M886 429h293"/>
+</g>
+<g fill="#2b3032" opacity=".7">
+  <rect x="907" y="114" width="96" height="32" transform="skewY(-8)"/><rect x="982" y="250" width="118" height="40" transform="skewY(-8)"/>
+</g>
+<path d="M0 390C250 350 520 349 1200 401v219H0z" fill="url(#road)"/>
+<path d="M0 420 585 367 1200 423" fill="none" stroke="#2c3335" stroke-width="3" opacity=".65"/>
+<g opacity=".3" stroke="#738083" stroke-width="2">
+  <path d="M0 450 1200 428"/><path d="M0 487 1200 462"/><path d="M0 526 1200 496"/><path d="M0 568 1200 531"/>
+</g>
+<g opacity=".3" fill="#495255">
+  <path d="M190 403 105 620h62l74-217z"/><path d="M412 382 380 620h58l24-238z"/><path d="M625 378 648 620h70l-39-242z"/><path d="M824 389 930 620h76L875 392z"/>
+</g>
+<g opacity=".68">
+  <circle cx="562" cy="299" r="82" fill="url(#lamp)"/><circle cx="711" cy="321" r="58" fill="url(#lamp)"/><circle cx="823" cy="305" r="44" fill="url(#lamp)"/>
+  <circle cx="562" cy="299" r="5" fill="#fff"/><circle cx="711" cy="321" r="4" fill="#fff"/><circle cx="823" cy="305" r="4" fill="#fff"/>
+</g>
+<g opacity=".32" filter="url(#soft)">
+  <path d="M544 353 507 620h64l12-267z" fill="#eef5f5"/><path d="M699 357 676 620h48l18-263z" fill="#eef5f5"/><path d="M815 355 812 620h43l4-265z" fill="#eef5f5"/>
+</g>
+<g opacity=".22" stroke="#b8c4c6">
+  <path d="M520 356 446 620"/><path d="M566 354 548 620"/><path d="M711 356 693 620"/><path d="M820 354 850 620"/>
+</g>
+<g stroke="url(#teal)" fill="none" opacity=".75" filter="url(#glow)">
+  <path d="M1020 386h118" stroke-width="7"/><path d="M899 274v115" stroke-width="2.5"/><path d="M1090 210l17-18 17 18 17-18" stroke-width="3"/>
+</g>
+<g transform="translate(914 285) rotate(-4)">
+  <text x="0" y="0" fill="#f0f2f2" font-family="Arial Black,Arial" font-style="italic" font-size="28">GOOD PEOPLE</text>
+  <text x="0" y="35" fill="#f0f2f2" font-family="Arial Black,Arial" font-style="italic" font-size="28">GREAT DEALS</text>
+  <text x="0" y="70" fill="#f0f2f2" font-family="Arial Black,Arial" font-style="italic" font-size="28">STRONGER</text>
+  <text x="0" y="105" fill="#f0f2f2" font-family="Arial Black,Arial" font-style="italic" font-size="28">COMMUNITIES.</text>
+</g>
+<g opacity=".95">
+  <path d="M742 365h34v19h-34zM786 367h26v16h-26z" fill="#050607"/>
+  <circle cx="749" cy="385" r="6" fill="#090b0c"/><circle cx="804" cy="385" r="6" fill="#090b0c"/>
+</g>
+<rect width="1200" height="620" filter="url(#grain)" opacity=".5"/>
+<rect width="1200" height="620" fill="none" stroke="#00e5d6" stroke-opacity=".08"/>
+</svg>

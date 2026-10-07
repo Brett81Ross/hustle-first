@@ -242,3 +242,204 @@ clip-path:polygon(0 100%,0 49%,8% 49%,8% 25%,13% 25%,13% 40%,18% 40%,18% 13%,24%
   .mockup-publish-bar{flex-direction:column}
   .mockup-publish-bar .button{width:100%}
 }
+
+
+/* ABL-34 exact mockup fidelity */
+.home-shell{max-width:820px}
+.exact-home-hero{border-radius:22px;background:#050809;box-shadow:0 22px 70px rgba(0,0,0,.55);overflow:hidden}
+.exact-home-hero .mockup-topbar{min-height:110px;padding:14px 18px 8px;background:linear-gradient(180deg,#080c0d,#050809)}
+.brand-copy{display:grid;gap:5px}
+.brand-subline{font-size:.58rem;letter-spacing:.28em;color:#b0b9bb;white-space:nowrap}
+.hf-logo-svg{width:78px;height:78px}
+.brand-lockup .brand-words strong{font-size:2.1rem}
+.brand-lockup .brand-words em{font-size:2.05rem}
+.exact-urban-hero{min-height:360px;padding:0;background:
+linear-gradient(90deg,rgba(2,5,6,.8) 0%,rgba(2,5,6,.44) 42%,rgba(2,5,6,.05) 70%),
+linear-gradient(180deg,rgba(2,5,6,.02) 0%,rgba(2,5,6,.16) 54%,rgba(2,5,6,.8) 100%),
+url("/hf-urban-hero.svg") center/cover no-repeat}
+.exact-urban-hero:before,.exact-urban-hero:after{display:none}
+.compact-slogan{position:absolute;left:28px;bottom:28px;max-width:470px}
+.compact-slogan span,.compact-slogan strong{font-family:Arial Black,Arial,sans-serif;font-style:italic;transform:skew(-5deg);font-size:clamp(2.35rem,6.3vw,4.25rem);line-height:.92;letter-spacing:-.05em}
+.compact-slogan span{color:#f3f5f5}
+.compact-slogan strong{color:var(--mock-cyan)}
+.compact-slogan span:first-child{font-size:clamp(2rem,5.7vw,3.8rem)}
+.exact-category-grid{padding:10px 12px 13px;gap:8px;border-top:1px solid rgba(127,243,233,.08);background:#060a0b}
+.exact-category-grid a{height:84px;min-height:0;border-radius:10px;background:linear-gradient(180deg,#111718,#080c0d);border-color:#2c4144}
+.exact-category-grid a svg{width:27px;height:27px}
+.exact-category-grid a strong{font-size:.88rem}
+.exact-actions{gap:8px;margin-top:10px}
+.exact-actions .mockup-action{min-height:72px;border-radius:12px;padding:10px 14px;background:linear-gradient(180deg,#13191a,#0b0f10);border-color:#2e3d40}
+.exact-actions .mockup-action.primary{background:linear-gradient(90deg,#00dfd0,#66fff2);border-color:#75fff3}
+.exact-actions .action-round{width:42px;height:42px;border-radius:50%}
+.exact-share-card{margin-top:12px;border-radius:12px;background:
+linear-gradient(135deg,rgba(0,229,214,.06),transparent 55%),
+linear-gradient(180deg,#0f1516,#090d0e);border-color:#2e4346;padding:15px 16px;grid-template-columns:1fr 88px}
+.exact-share-card>img{width:86px;border-radius:7px;padding:6px}
+.exact-share-card .share-title-row strong{font-size:.98rem}
+.exact-share-card .share-copy>p{font-size:.82rem}
+.exact-share-card .share-title-row>svg{width:28px;height:28px}
+.exact-share-card .button{min-height:40px;padding:0 13px;border-radius:8px}
+.bottom-nav{width:min(calc(100% - 24px),800px);height:64px;bottom:8px;border-radius:14px;border-color:#28383b;background:rgba(5,9,10,.96)}
+.bottom-nav a{border-radius:9px}
+.bottom-nav a>svg{width:21px;height:21px}
+.bottom-nav a small{font-size:.64rem}
+.bottom-nav a.post .nav-plus{width:40px;height:40px}
+.brand-footer{margin-top:24px;padding-top:14px}
+@media(min-width:740px){
+  .exact-actions{grid-template-columns:1fr}
+  .exact-actions .mockup-action{min-height:74px}
+}
+@media(max-width:620px){
+  .home-shell{padding-left:8px;padding-right:8px}
+  .exact-home-hero .mockup-topbar{min-height:88px;padding:10px 10px 4px}
+  .hf-logo-svg{width:64px;height:64px}
+  .brand-lockup .brand-words strong,.brand-lockup .brand-words em{font-size:1.45rem}
+  .brand-subline{font-size:.48rem;letter-spacing:.18em}
+  .exact-urban-hero{min-height:300px;background-position:center}
+  .compact-slogan{left:18px;bottom:18px;max-width:78%}
+  .compact-slogan span,.compact-slogan strong{font-size:clamp(1.95rem,10.3vw,3.3rem)}
+  .compact-slogan span:first-child{font-size:clamp(1.75rem,9vw,3rem)}
+  .exact-category-grid{gap:6px;padding:8px}
+  .exact-category-grid a{height:74px}
+  .exact-category-grid a svg{width:23px;height:23px}
+  .exact-actions .mockup-action{min-height:68px}
+  .exact-share-card{grid-template-columns:1fr 76px}
+  .exact-share-card>img{width:74px}
+}
+@media(max-width:430px){
+  .brand-subline{display:none}
+  .exact-home-hero .mockup-topbar{grid-template-columns:42px 1fr 42px}
+  .hf-logo-svg{width:56px;height:56px}
+  .brand-lockup .brand-words strong,.brand-lockup .brand-words em{font-size:1.22rem}
+  .exact-urban-hero{min-height:270px}
+  .compact-slogan{max-width:84%;left:14px}
+  .exact-category-grid a strong{font-size:.76rem}
+}
+
+
+.exact-account-chip{justify-self:end;max-width:170px;font-size:.7rem;padding:7px 9px}
+.exact-dashboard-hero{padding:22px;border:1px solid #2c3e41;border-radius:14px;background:linear-gradient(135deg,rgba(0,229,214,.055),transparent 46%),linear-gradient(180deg,#101617,#090d0e)}
+.exact-dashboard-hero h1{font-size:clamp(2.4rem,7vw,4rem);margin:.08em 0}
+.exact-dashboard-hero p:last-child{max-width:620px;color:#9aa7aa;line-height:1.55}
+.exact-dashboard-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:10px}
+.exact-dashboard-actions a{min-height:88px;padding:14px;border:1px solid #314145;border-radius:11px;background:linear-gradient(180deg,#121819,#0a0e0f);display:grid;grid-template-columns:44px 1fr;align-items:center;gap:12px;color:#fff;text-decoration:none}
+.exact-dashboard-actions a>span{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#081011;border:1px solid #284245;color:var(--mock-cyan)}
+.exact-dashboard-actions a>span svg{width:23px;height:23px}
+.exact-dashboard-actions a div{display:grid;gap:3px}
+.exact-dashboard-actions a strong{font-size:.96rem}
+.exact-dashboard-actions a small{color:#899699;line-height:1.3}
+.exact-listing-section{margin-top:20px}
+.exact-service-hero{padding:22px;border:1px solid #304145;border-radius:14px;background:linear-gradient(135deg,rgba(0,229,214,.06),transparent 54%),linear-gradient(180deg,#111718,#090d0e)}
+.service-badge-row{display:flex;margin-bottom:8px}
+.exact-service-hero .mock-badge{position:static}
+.exact-service-hero h1{font-size:clamp(2.5rem,7vw,4rem);margin:.08em 0 .14em}
+.exact-service-hero>p{max-width:720px;color:#aeb9bb;line-height:1.6}
+.exact-service-hero>strong{display:block;color:var(--mock-cyan);font-size:1.35rem;margin-top:10px}
+.exact-booking-panel{margin-top:10px;padding:20px;border:1px solid #2d3d40;border-radius:14px;background:#0a0f10}
+.exact-booking-panel h2{font-size:1.55rem;margin:.2em 0 16px}
+.exact-booking-panel .booking-blocks{gap:10px}
+.exact-booking-panel .booking-block{border-radius:10px;background:#0f1516;border-color:#2f4245}
+.exact-booking-panel .slot-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.exact-booking-panel .slot-button{border-radius:8px;background:#0d1516;border-color:#325055;min-height:44px;font-size:.84rem}
+.exact-booking-panel .slot-button:hover{background:rgba(0,229,214,.08);border-color:var(--mock-cyan)}
+@media(max-width:680px){
+ .exact-dashboard-actions{grid-template-columns:1fr}
+ .exact-booking-panel .slot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:430px){
+ .exact-account-chip{display:none}
+ .exact-dashboard-hero,.exact-service-hero,.exact-booking-panel{padding:16px}
+}
+
+
+/* ABL-34 exact screen fidelity: marketplace, detail, create, utility screens */
+.exact-marketplace-shell{max-width:820px}
+.exact-screen-bar{min-height:76px;padding:8px 8px 10px;background:linear-gradient(180deg,#080c0d,#050809);border-bottom:1px solid #1f2d30}
+.exact-screen-bar .brand-lockup.compact .hf-logo-svg{width:46px;height:46px}
+.exact-screen-bar .brand-lockup.compact .brand-words strong,.exact-screen-bar .brand-lockup.compact .brand-words em{font-size:1.18rem}
+.exact-search-panel{padding:11px 0 6px}
+.exact-search-panel .mock-search{height:46px;border-radius:10px;background:#0d1314}
+.exact-search-panel .mock-filter-row{padding-top:8px;gap:6px}
+.exact-search-panel .mock-filter-row a{min-height:36px;border-radius:8px;padding:0 10px}
+.exact-market-heading{margin:13px 0 10px}
+.exact-market-heading h1{font-size:clamp(2rem,5.5vw,3rem)}
+.exact-market-grid{gap:8px}
+.exact-market-grid .mock-listing-card{border-radius:10px;background:#0a0f10;border-color:#2e3d40;box-shadow:0 5px 18px rgba(0,0,0,.25)}
+.exact-market-grid .mock-listing-media{aspect-ratio:1.05/1}
+.exact-market-grid .mock-badge{left:7px;top:7px;border-radius:7px;padding:5px 7px}
+.exact-market-grid .mock-listing-info{padding:9px 10px 10px}
+.exact-market-grid .mock-price{font-size:.92rem;padding:3px 6px;border-radius:5px}
+.exact-market-grid .mock-listing-info h3{font-size:.96rem}
+.exact-market-grid .mock-listing-info>p{font-size:.76rem;min-height:2.4em}
+.exact-market-grid .mock-card-meta{margin-top:7px;padding-top:7px}
+.exact-detail-card{border-radius:14px;border-color:#2f4043;background:#090d0e;box-shadow:0 16px 48px rgba(0,0,0,.38)}
+.exact-detail-card .mock-detail-main{min-height:250px}
+.exact-detail-card .mock-detail-main>img{max-height:500px}
+.exact-detail-card .mock-detail-thumbs{padding:7px;gap:6px}
+.exact-detail-card .mock-detail-thumbs img{width:72px;height:54px;border-radius:7px}
+.exact-detail-content{padding:17px}
+.exact-detail-content h1{font-size:clamp(2.2rem,6.5vw,3.7rem);margin:.04em 0 .1em}
+.exact-detail-content .mock-detail-price{font-size:1.45rem;margin-bottom:10px}
+.exact-detail-content .mock-detail-description{font-size:.92rem;line-height:1.55}
+.exact-detail-content .mock-detail-actions{margin-top:15px;gap:7px}
+.exact-detail-content .mock-detail-actions .button{min-height:42px;border-radius:8px;padding:0 13px}
+.exact-detail-content .detail-qr{width:46px;height:46px;border-radius:6px}
+.exact-detail-content .service-cta-panel{margin-top:16px;padding:14px;border-radius:10px;background:linear-gradient(90deg,rgba(0,229,214,.045),rgba(0,229,214,.01))}
+.exact-create-card{padding:17px;border-radius:14px;background:linear-gradient(180deg,#0e1415,#080c0d);border-color:#2f4144}
+.exact-create-card .mockup-create-heading h1{font-size:clamp(2.1rem,6vw,3.2rem)}
+.exact-create-card .mockup-create-heading>p:last-child{font-size:.88rem}
+.exact-create-form{gap:16px;margin-top:16px}
+.exact-create-form legend{font-size:.9rem}
+.exact-create-form .mockup-photo-grid{gap:6px}
+.exact-create-form .mockup-photo-thumb,.exact-create-form .mockup-photo-add{border-radius:8px}
+.exact-create-form .mockup-photo-add{min-height:96px}
+.exact-create-form .mockup-photo-actions{gap:6px}
+.exact-create-form .mockup-photo-actions label{min-height:38px;border-radius:8px;font-size:.76rem}
+.exact-create-form .mockup-category-choices{gap:6px}
+.exact-create-form .mockup-category-choices button{min-height:64px;border-radius:8px;padding:8px}
+.exact-create-form .mockup-category-choices button>svg{width:21px;height:21px}
+.exact-create-form .mockup-category-choices button strong{font-size:.86rem}
+.exact-create-form .mockup-category-choices button small{font-size:.6rem}
+.exact-create-form input,.exact-create-form textarea{border-radius:8px;padding:10px 11px}
+.exact-create-form .mockup-contact-row,.exact-create-form .mockup-service-note,.exact-create-form .mockup-free-row{border-radius:8px;padding:10px}
+.exact-create-form .mockup-publish-bar .button{min-height:44px;border-radius:8px}
+.exact-create-form .mockup-publish-bar .button:last-child{min-width:160px}
+.exact-message-section{margin-top:10px}
+.exact-message-section .conversation-card{border-radius:10px;padding:12px;background:#0d1314;border-color:#2d3d40}
+.exact-message-section .conversation-card img,.exact-message-section .conversation-placeholder{border-radius:8px}
+.exact-appointments-panel{padding:17px}
+.exact-appointments-panel .booking-block{padding:14px}
+@media(max-width:620px){
+  .exact-screen-bar{min-height:66px}
+  .exact-screen-bar .brand-lockup.compact .hf-logo-svg{width:40px;height:40px}
+  .exact-screen-bar .brand-lockup.compact .brand-words strong,.exact-screen-bar .brand-lockup.compact .brand-words em{font-size:1.05rem}
+  .exact-market-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .exact-create-card{padding:13px}
+  .exact-detail-content{padding:14px}
+}
+@media(max-width:430px){
+  .exact-marketplace-shell{padding-left:8px;padding-right:8px}
+  .exact-market-heading h1{font-size:1.85rem}
+  .exact-market-grid{gap:7px}
+  .exact-market-grid .mock-listing-info h3{font-size:.88rem}
+  .exact-market-grid .mock-listing-info>p{font-size:.7rem}
+  .exact-market-grid .mock-card-meta{font-size:.58rem}
+  .exact-create-form .mockup-category-choices{grid-template-columns:1fr 1fr}
+  .exact-create-form .mockup-photo-grid{grid-template-columns:1fr 1fr}
+}
+
+/* ABL-34 photographic hero fidelity */
+.exact-urban-hero{
+  background:
+    linear-gradient(90deg,rgba(2,5,6,.82) 0%,rgba(2,5,6,.38) 48%,rgba(2,5,6,.12) 74%),
+    linear-gradient(180deg,rgba(2,5,6,.02) 0%,rgba(2,5,6,.12) 52%,rgba(2,5,6,.82) 100%),
+    url("/hf-urban-photo.webp") center 55%/cover no-repeat;
+}
+.exact-urban-hero::before{display:block;content:"";position:absolute;inset:0;pointer-events:none;background:
+  radial-gradient(circle at 32% 53%,rgba(255,255,255,.22) 0 1px,transparent 8%),
+  linear-gradient(110deg,transparent 0 58%,rgba(0,229,214,.05) 72%,transparent 84%);
+  mix-blend-mode:screen;opacity:.55}
+.exact-urban-hero::after{display:block;content:"";position:absolute;inset:0;pointer-events:none;background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.014) 0 1px,transparent 1px 4px);
+  opacity:.42}
+.compact-slogan{z-index:3;text-shadow:0 4px 18px rgba(0,0,0,.95)}
