@@ -1,0 +1,1 @@
+export default function ListingPlaceholder({label="HUSTLE FIRST™"}:{label?:string}){return <div className="mock-photo-placeholder branded-listing-placeholder"><span className="placeholder-mark"><img src="/hf-logo-mark.svg" alt=""/></span><small>{label}</small><i aria-hidden="true"/></div>}
