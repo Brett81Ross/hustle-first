@@ -947,3 +947,14 @@ body{
   .exact-actions .mockup-action small{font-size:.69rem}
   .exact-market-grid{grid-template-columns:1fr}
 }
+
+/* Branded fallback media: no listing should look like an empty black box. */
+.exact-market-grid .mock-photo-placeholder{
+  position:relative;
+  isolation:isolate;
+  background:
+    linear-gradient(180deg,rgba(3,8,9,.48),rgba(3,8,9,.88)),
+    url("/hf-urban-photo.webp") center/cover no-repeat;
+}
+.exact-market-grid .mock-photo-placeholder:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 50% 42%,rgba(0,229,214,.18),transparent 28%)}
+.exact-market-grid .mock-photo-placeholder span,.exact-market-grid .mock-photo-placeholder small{position:relative;z-index:1;text-shadow:0 3px 12px rgba(0,0,0,.9)}
