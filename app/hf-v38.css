@@ -14,7 +14,7 @@ body{background:radial-gradient(ellipse at 50% 0,rgba(0,229,214,.09),transparent
 .exact-home-hero .home-menu-wrap{align-self:start;margin-top:5px}
 .exact-home-hero .mockup-topbar>.plain-icon{align-self:start;justify-self:end;margin-top:5px}
 .exact-home-hero .brand-lockup{display:flex;flex-direction:column;justify-self:center;align-items:center;gap:1px;min-width:0;width:100%;overflow:visible}
-.exact-home-hero .brand-lockup .hf-logo-svg{width:50px;height:50px;flex:none;filter:drop-shadow(0 0 8px rgba(0,229,214,.55)) drop-shadow(0 5px 9px #000)}
+.exact-home-hero .brand-lockup .hf-logo-svg{width:50px;height:50px;flex:none;object-fit:contain;filter:drop-shadow(0 0 3px rgba(0,229,214,.4)) drop-shadow(0 3px 5px #000)}
 .brand-copy{min-width:0;display:grid;justify-items:center;gap:3px}
 .brand-words{display:flex;align-items:baseline;justify-content:center;gap:6px;white-space:nowrap;line-height:1}
 .brand-words strong{font-family:Impact,"Arial Narrow",sans-serif;font-weight:900;letter-spacing:.025em;background:linear-gradient(180deg,#fff 0%,#9ba4a9 27%,#e9edee 43%,#48545a 74%,#dbe0e1 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:.35px rgba(234,241,243,.35);filter:drop-shadow(0 3px 1px #000)}
