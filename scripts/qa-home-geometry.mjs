@@ -44,7 +44,7 @@ async function connect(){
   try{
    const portFile=profile+"/DevToolsActivePort";
    if(hasFile(portFile)){
-    const port=readFileSync(portFile,"utf8").split("\\n")[0].trim();
+    const port=readFileSync(portFile,"utf8").split(/\r?\n/)[0].trim();
     const targets=await(await fetch("http://127.0.0.1:"+port+"/json/list",{signal:AbortSignal.timeout(1250)})).json();
     const page=targets.find(t=>t.type==="page"&&t.webSocketDebuggerUrl);
     if(page)return new WebSocket(page.webSocketDebuggerUrl);
