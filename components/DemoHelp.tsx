@@ -11,29 +11,30 @@ const steps=[
   ["Manage My Hustle","Open My Hustle to review your listings and activity. Keep contact and meetup details current so people know how to reach you."],
   ["Messages and appointments","Use the app's message and appointment areas to keep service conversations and scheduling organized."],
   ["Share Hustle First","Use the built-in Share controls or QR code to invite another person into the marketplace."],
-  ["Use Help anytime","Tap the ? button whenever you want this walkthrough again. The eventual demo video will live here too."]
+  ["Use Help anytime","Open Help from the main menu or the footer whenever you need this walkthrough again."]
 ];
 
 export default function DemoHelp(){
   const[open,setOpen]=useState(false);
   const[dontShow,setDontShow]=useState(false);
   useEffect(()=>{
+    const show=()=>setOpen(true);
+    window.addEventListener("hf:help-open",show);
+    let timer:ReturnType<typeof setTimeout>|undefined;
     try{
       const seen=localStorage.getItem(SEEN_KEY)==="1";
       const dismissed=localStorage.getItem(DISMISS_KEY)==="1";
       if(!seen&&!dismissed){
-        const t=window.setTimeout(()=>{setOpen(true);localStorage.setItem(SEEN_KEY,"1")},900);
-        return()=>window.clearTimeout(t);
+        timer=window.setTimeout(()=>{setOpen(true);localStorage.setItem(SEEN_KEY,"1")},900);
       }
     }catch{}
+    return()=>{window.removeEventListener("hf:help-open",show);if(timer!==undefined)window.clearTimeout(timer)};
   },[]);
   const close=()=>{
     try{if(dontShow)localStorage.setItem(DISMISS_KEY,"1")}catch{}
     setOpen(false);
   };
   return <>
-    <button type="button" aria-label="How to use Hustle First" title="How to use Hustle First" onClick={()=>setOpen(true)}
-      style={{position:"fixed",right:16,bottom:"calc(82px + env(safe-area-inset-bottom))",zIndex:1200,width:44,height:44,borderRadius:15,border:"1px solid rgba(132,255,198,.35)",background:"rgba(12,18,17,.94)",color:"#eafff3",fontWeight:950,fontSize:18,boxShadow:"0 12px 34px rgba(0,0,0,.38)",cursor:"pointer"}}>?</button>
     {open&&<div role="presentation" onMouseDown={e=>{if(e.target===e.currentTarget)close()}}
       style={{position:"fixed",inset:0,zIndex:1400,display:"flex",alignItems:"flex-end",justifyContent:"center",background:"rgba(0,0,0,.76)",paddingTop:"env(safe-area-inset-top)"}}>
       <section role="dialog" aria-modal="true" aria-labelledby="hfDemoTitle"
@@ -42,7 +43,7 @@ export default function DemoHelp(){
           <div><div style={{fontSize:11,fontWeight:900,letterSpacing:".14em",color:"#72e5b1"}}>HUSTLE FIRST™ · HELP</div><h2 id="hfDemoTitle" style={{margin:"5px 0 0",fontSize:22}}>How to use Hustle First</h2></div>
           <button type="button" onClick={close} aria-label="Close help" style={{width:40,height:40,borderRadius:"50%",border:"1px solid #34423d",background:"#151b19",color:"#fff",fontSize:22,cursor:"pointer"}}>×</button>
         </div>
-        <p style={{margin:"10px 0 14px",color:"#aabbb3",fontSize:13,lineHeight:1.5}}>A quick walkthrough of the marketplace. You can skip this at any time and reopen it later with the ? button.</p>
+        <p style={{margin:"10px 0 14px",color:"#aabbb3",fontSize:13,lineHeight:1.5}}>A quick walkthrough of the marketplace. You can skip this at any time and reopen it later from the menu or footer.</p>
         <div style={{border:"1px dashed #3c5b4e",borderRadius:18,padding:16,background:"#0f1513",color:"#aabbb3",fontSize:12,lineHeight:1.5}}>
           <strong style={{color:"#eafff3"}}>Demo video slot ready.</strong><br/>The written walkthrough works now. The final short screen-recorded tutorial can be added here once the interface is locked.
         </div>
