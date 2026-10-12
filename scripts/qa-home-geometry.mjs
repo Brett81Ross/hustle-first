@@ -11,15 +11,16 @@ for(const candidate of ["google-chrome","google-chrome-stable","chromium","chrom
 }
 if(!binary)throw new Error("No Chrome/Chromium installed on this runner.");
 
-for(let i=0;i<60;i++){
- try{const res=await fetch(HOST);if(res.ok)break;if(i===59)throw new Error("App unhealthy: "+res.status)}catch(e){if(i===59)throw e}await sleep(400);
+for(let i=0;i<16;i++){
+ try{const res=await fetch(HOST,{signal:AbortSignal.timeout(2500)});if(res.ok)break;if(i===15)throw new Error("App unhealthy: "+res.status)}catch(e){if(i===15)throw e}await sleep(300);
 }
 
+console.log('App is responding; launching '+binary);
 const chrome=spawn(binary,["--headless=new","--no-sandbox","--disable-dev-shm-usage","--disable-gpu","--no-first-run","--no-default-browser-check","--remote-debugging-port=9229","--remote-allow-origins=*","--user-data-dir=/tmp/hf-layout-check-"+process.pid,"about:blank"],{stdio:"ignore"});
 async function connect(){
- for(let i=0;i<50;i++){
+ for(let i=0;i<20;i++){
   try{
-   const targets=await(await fetch("http://127.0.0.1:9229/json/list")).json();
+   const targets=await(await fetch("http://127.0.0.1:9229/json/list",{signal:AbortSignal.timeout(1500)})).json();
    const page=targets.find(t=>t.type==="page"&&t.webSocketDebuggerUrl);
    if(page)return new WebSocket(page.webSocketDebuggerUrl);
   }catch{}

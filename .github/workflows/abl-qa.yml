@@ -43,6 +43,7 @@ jobs:
         run: npm run build
 
       - name: Browser geometry QA (no deployment)
+        timeout-minutes: 2
         run: |
           npm run start -- --hostname 127.0.0.1 --port 3000 > /tmp/hf-start.log 2>&1 &
           APP_PID=$!
