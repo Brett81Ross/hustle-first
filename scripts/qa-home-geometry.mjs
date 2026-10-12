@@ -85,7 +85,7 @@ try{
   const violations=[];
   if(m.pageWidth>width+2)violations.push("horizontal overflow: "+m.pageWidth+" > "+width);
   const logoCheck=await call("Runtime.evaluate",{returnByValue:true,expression:`(()=>{const i=document.querySelector('.exact-home-hero .hf-logo-svg');return i?{src:i.getAttribute('src'),loaded:i.complete&&i.naturalWidth>0,width:i.naturalWidth,height:i.naturalHeight}:null})()`});
-  if(!logoCheck.result?.value?.loaded||!logoCheck.result.value.src?.includes("hf-shield-v382.webp"))violations.push("corrected HF image missing or failed to load");
+  if(!logoCheck.result?.value?.loaded||!logoCheck.result.value.src?.includes("hf-approved-original-2026.webp"))violations.push("corrected HF image missing or failed to load");
   if(m.header.height>headerMax)violations.push("header too tall: "+m.header.height+" > "+headerMax);
   if(m.hero.height>heroMax)violations.push("hero too tall: "+m.hero.height+" > "+heroMax);
   if(m.firstAction.bottom>m.nav.top)violations.push("first action hidden behind bottom navigation");
