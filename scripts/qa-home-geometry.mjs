@@ -1,7 +1,7 @@
 // Hustle First ABL-39: local browser geometry QA; no Vercel preview or deployment.
 // Uses installed Chrome/Chromium and Node WebSocket. Captures real rendered UI, not a mockup.
 import {spawn, execFileSync} from "node:child_process";
-import {mkdirSync, writeFileSync} from "node:fs";
+import {mkdirSync, writeFileSync, createWriteStream, existsSync as hasFile} from "node:fs";
 
 // The homepage is a static Next.js output: inspect its actual rendered HTML locally,
 // avoiding network-dependent Clerk middleware during QA.
@@ -32,18 +32,30 @@ for(const candidate of ["google-chrome","google-chrome-stable","chromium","chrom
  try{binary=execFileSync("which",[candidate],{encoding:"utf8"}).trim();break}catch{}
 }
 if(!binary)throw new Error("Chrome/Chromium not on runner");
-console.log('Launching browser '+binary);
-const chrome=spawn(binary,["--headless=new","--no-sandbox","--disable-dev-shm-usage","--disable-gpu","--no-first-run","--no-default-browser-check","--remote-debugging-port=9229","--remote-allow-origins=*","--user-data-dir=/tmp/hf-layout-check-"+process.pid,"about:blank"],{stdio:"ignore"});
+console.log("Launching browser "+binary);
+const profile="/tmp/hf-layout-check-"+process.pid;
+const diagnostics=createWriteStream("/tmp/hf-chrome-debug-"+process.pid+".log");
+const chrome=spawn(binary,["--headless=new","--no-sandbox","--disable-setuid-sandbox","--disable-dev-shm-usage","--disable-gpu","--no-zygote","--disable-extensions","--no-first-run","--no-default-browser-check","--remote-debugging-port=0","--remote-allow-origins=*","--user-data-dir="+profile,"about:blank"],{stdio:["ignore","ignore","pipe"]});
+chrome.stderr.pipe(diagnostics);
+chrome.on("error",err=>console.error("Chrome launch error:",err.message));
 async function connect(){
- for(let i=0;i<20;i++){
+ let lastError="";
+ for(let i=0;i<45;i++){
   try{
-   const targets=await(await fetch("http://127.0.0.1:9229/json/list",{signal:AbortSignal.timeout(1500)})).json();
-   const page=targets.find(t=>t.type==="page"&&t.webSocketDebuggerUrl);
-   if(page)return new WebSocket(page.webSocketDebuggerUrl);
-  }catch{}
+   const portFile=profile+"/DevToolsActivePort";
+   if(hasFile(portFile)){
+    const port=readFileSync(portFile,"utf8").split("\\n")[0].trim();
+    const targets=await(await fetch("http://127.0.0.1:"+port+"/json/list",{signal:AbortSignal.timeout(1250)})).json();
+    const page=targets.find(t=>t.type==="page"&&t.webSocketDebuggerUrl);
+    if(page)return new WebSocket(page.webSocketDebuggerUrl);
+   }
+  }catch(e){lastError=String(e)}
+  if(chrome.exitCode!==null)break;
   await sleep(250);
  }
- throw new Error("Chrome DevTools unavailable.");
+ diagnostics.end();
+ let errorLog="";try{errorLog=readFileSync("/tmp/hf-chrome-debug-"+process.pid+".log","utf8").slice(-2800)}catch{}
+ throw new Error("Chrome DevTools unavailable. exit="+chrome.exitCode+" signal="+chrome.signalCode+"; "+lastError+"; log: "+errorLog);
 }
 let ws;
 let serial=0;const pending=new Map();
