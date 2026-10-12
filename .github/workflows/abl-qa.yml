@@ -41,3 +41,16 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Browser geometry QA (no deployment)
+        timeout-minutes: 2
+        run: |
+          node scripts/qa-home-geometry.mjs
+
+      - name: Save real browser QA screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hustle-first-abl39-layout-qa
+          path: qa-artifacts/
+          if-no-files-found: ignore
