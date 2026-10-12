@@ -15,7 +15,7 @@ for(let i=0;i<60;i++){
  try{const res=await fetch(HOST);if(res.ok)break;if(i===59)throw new Error("App unhealthy: "+res.status)}catch(e){if(i===59)throw e}await sleep(400);
 }
 
-const chrome=spawn(binary,["--headless=new","--no-sandbox","--disable-dev-shm-usage","--disable-gpu","--no-first-run","--no-default-browser-check","--remote-debugging-port=9229","--user-data-dir=/tmp/hf-layout-check-"+process.pid,"about:blank"],{stdio:"ignore"});
+const chrome=spawn(binary,["--headless=new","--no-sandbox","--disable-dev-shm-usage","--disable-gpu","--no-first-run","--no-default-browser-check","--remote-debugging-port=9229","--remote-allow-origins=*","--user-data-dir=/tmp/hf-layout-check-"+process.pid,"about:blank"],{stdio:"ignore"});
 async function connect(){
  for(let i=0;i<50;i++){
   try{
@@ -31,14 +31,14 @@ let ws;
 let serial=0;const pending=new Map();
 try{
  ws=await connect();
- await new Promise((resolve,reject)=>{if(ws.readyState===WebSocket.OPEN)return resolve();ws.addEventListener("open",resolve,{once:true});ws.addEventListener("error",reject,{once:true})});
+ await new Promise((resolve,reject)=>{if(ws.readyState===WebSocket.OPEN)return resolve();const timeout=setTimeout(()=>reject(new Error("Chrome WebSocket open timeout")),8000);ws.addEventListener("open",()=>{clearTimeout(timeout);resolve()},{once:true});ws.addEventListener("error",e=>{clearTimeout(timeout);reject(e)},{once:true});ws.addEventListener("close",()=>{clearTimeout(timeout);reject(new Error("Chrome DevTools socket closed before opening"))},{once:true})});
  ws.addEventListener("message",ev=>{const m=JSON.parse(ev.data);if(!m.id)return;const p=pending.get(m.id);if(!p)return;pending.delete(m.id);m.error?p.reject(new Error(JSON.stringify(m.error))):p.resolve(m.result)});
- function call(method,params={}){const id=++serial;return new Promise((resolve,reject)=>{pending.set(id,{resolve,reject});ws.send(JSON.stringify({id,method,params}))})}
+ function call(method,params={}){const id=++serial;return new Promise((resolve,reject)=>{const timeout=setTimeout(()=>{pending.delete(id);reject(new Error("CDP timed out: "+method))},14000);pending.set(id,{resolve:value=>{clearTimeout(timeout);resolve(value)},reject:error=>{clearTimeout(timeout);reject(error)}});ws.send(JSON.stringify({id,method,params}))})}
  await call("Page.enable");
  await call("Runtime.enable");
  await call("Page.addScriptToEvaluateOnNewDocument",{source:"try{localStorage.setItem('hf_demo_seen:1','1');localStorage.setItem('hf_demo_dismissed:1','1')}catch{}"});
  mkdirSync("qa-artifacts",{recursive:true});
- const sizes=[{name:"android-small",width:320,height:720},{name:"android-phone",width:390,height:844},{name:"fold-open",width:736,height:910}];
+ const sizes=[{name:"android-short",width:320,height:580},{name:"android-phone",width:390,height:640},{name:"android-tall",width:390,height:844},{name:"fold-open",width:736,height:910}];
  for(const {name,width,height} of sizes){
   await call("Emulation.setDeviceMetricsOverride",{width,height,deviceScaleFactor:1,mobile:true});
   await call("Page.navigate",{url:HOST+"/"});
