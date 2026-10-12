@@ -20,7 +20,7 @@ export default function DemoHelp(){
   useEffect(()=>{
     const show=()=>setOpen(true);
     window.addEventListener("hf:help-open",show);
-    let timer:ReturnType<typeof setTimeout>|undefined;
+    let timer:number|undefined;
     try{
       const seen=localStorage.getItem(SEEN_KEY)==="1";
       const dismissed=localStorage.getItem(DISMISS_KEY)==="1";
