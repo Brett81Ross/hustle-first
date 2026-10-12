@@ -3,19 +3,36 @@
 import {spawn, execFileSync} from "node:child_process";
 import {mkdirSync, writeFileSync} from "node:fs";
 
-const HOST="http://127.0.0.1:3000";
+// The homepage is a static Next.js output: inspect its actual rendered HTML locally,
+// avoiding network-dependent Clerk middleware during QA.
+import {createServer} from "node:http";
+import {existsSync, readFileSync} from "node:fs";
+import {resolve, extname, join, sep} from "node:path";
+const PORT=38751, HOST="http://127.0.0.1:"+PORT;
 const sleep=(ms)=>new Promise(r=>setTimeout(r,ms));
+const root=process.cwd(), publicRoot=resolve(root,"public"), chunksRoot=resolve(root,".next/static"), htmlPath=resolve(root,".next/server/app/index.html");
+if(!existsSync(htmlPath))throw Error("Next.js prerendered homepage missing at "+htmlPath);
+const mime={".html":"text/html; charset=utf-8",".js":"application/javascript",".css":"text/css",".webp":"image/webp",".svg":"image/svg+xml",".png":"image/png",".jpg":"image/jpeg",".woff2":"font/woff2",".ico":"image/x-icon"};
+const server=createServer((req,res)=>{
+ const pathname=new URL(req.url??"/",HOST).pathname;
+ let path=htmlPath,base=root;
+ if(pathname!=="/"){
+  if(pathname.startsWith("/_next/static/")){base=chunksRoot;path=resolve(chunksRoot,pathname.slice("/_next/static/".length));}
+  else{base=publicRoot;path=resolve(publicRoot,pathname.slice(1));}
+ }
+ if(path!==base && !path.startsWith(base+sep) && path!==htmlPath){res.writeHead(403).end();return;}
+ if(!existsSync(path)){res.writeHead(404).end();return;}
+ try{const data=readFileSync(path);res.writeHead(200,{"Content-Type":mime[extname(path)]??"application/octet-stream","Cache-Control":"no-store"});res.end(data)}
+ catch(e){res.writeHead(500).end(String(e))}
+});
+await new Promise((resolve,reject)=>{server.once("error",reject);server.listen(PORT,"127.0.0.1",resolve)});
+console.log("Real built static homepage served at "+HOST);
 let binary;
 for(const candidate of ["google-chrome","google-chrome-stable","chromium","chromium-browser"]){
-  try{binary=execFileSync("which",[candidate],{encoding:"utf8"}).trim();break}catch{}
+ try{binary=execFileSync("which",[candidate],{encoding:"utf8"}).trim();break}catch{}
 }
-if(!binary)throw new Error("No Chrome/Chromium installed on this runner.");
-
-for(let i=0;i<16;i++){
- try{const res=await fetch(HOST,{signal:AbortSignal.timeout(2500)});if(res.ok)break;if(i===15)throw new Error("App unhealthy: "+res.status)}catch(e){if(i===15)throw e}await sleep(300);
-}
-
-console.log('App is responding; launching '+binary);
+if(!binary)throw new Error("Chrome/Chromium not on runner");
+console.log('Launching browser '+binary);
 const chrome=spawn(binary,["--headless=new","--no-sandbox","--disable-dev-shm-usage","--disable-gpu","--no-first-run","--no-default-browser-check","--remote-debugging-port=9229","--remote-allow-origins=*","--user-data-dir=/tmp/hf-layout-check-"+process.pid,"about:blank"],{stdio:"ignore"});
 async function connect(){
  for(let i=0;i<20;i++){
@@ -66,4 +83,4 @@ try{
   writeFileSync("qa-artifacts/"+name+".json",JSON.stringify({...m,violations},null,2));
   if(violations.length)throw Error(name+": "+violations.join("; "));
  }
-}finally{try{ws?.close()}catch{}chrome.kill("SIGTERM")}
+}finally{try{ws?.close()}catch{}chrome.kill("SIGTERM");server.close()}
