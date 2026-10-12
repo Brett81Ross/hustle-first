@@ -84,6 +84,9 @@ try{
   const headerMax=width<450?113:150,heroMax=width<450?260:310;
   const violations=[];
   if(m.pageWidth>width+2)violations.push("horizontal overflow: "+m.pageWidth+" > "+width);
+  const image=await call("Runtime.evaluate",{returnByValue:true,expression:`(()=>{const img=document.querySelector(".exact-home-hero img.hf-logo-svg");return img?{src:img.getAttribute("src"),loaded:img.complete&&img.naturalWidth>0,w:img.naturalWidth,h:img.naturalHeight}:null})()`});
+  if(!image.result?.value?.loaded||!image.result.value.src?.includes("hf-logo-original.webp"))violations.push("extracted original logo failed to load");
+  
   if(m.header.height>headerMax)violations.push("header too tall: "+m.header.height+" > "+headerMax);
   if(m.hero.height>heroMax)violations.push("hero too tall: "+m.hero.height+" > "+heroMax);
   if(m.firstAction.bottom>m.nav.top)violations.push("first action hidden behind bottom navigation");
